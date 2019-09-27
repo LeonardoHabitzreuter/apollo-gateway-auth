@@ -1,0 +1,12 @@
+{
+  "name": "auth",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "@apollo/federation": "^0.9.4",
+    "apollo-server": "^2.9.3",
+    "graphql": "^14.4.2",
+    "jsonwebtoken": "^8.5.1"
+  }
+}
