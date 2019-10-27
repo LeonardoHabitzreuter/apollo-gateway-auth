@@ -1,8 +1,14 @@
-import { ApolloServer, gql } from 'apollo-server'
-import { buildFederatedSchema } from '@apollo/federation'
-import login from './login'
+const { ApolloServer, gql } = require('apollo-server')
+const { buildFederatedSchema } = require('@apollo/federation')
+const login = require('./login')
+
+const mock = () => { }
 
 const typeDefs = gql`
+  extend type Query {
+    mock: String
+  }
+
   type LoginResponse {
     token: String
   }
@@ -18,6 +24,7 @@ const typeDefs = gql`
 `
 
 const resolvers = {
+  Query: { mock },
   Mutation: { login }
 }
 

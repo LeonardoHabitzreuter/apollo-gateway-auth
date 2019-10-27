@@ -1,4 +1,4 @@
-import { sign } from 'jsonwebtoken'
+const { sign } = require('jsonwebtoken')
 
 const login = (_, { input }) => {
   if (input.email != 'admin' || input.password != '123') {
@@ -8,4 +8,4 @@ const login = (_, { input }) => {
   return { token: sign({ userId: 1 }, 'privateKey', { expiresIn: '1h' }) }
 }
 
-export default login
+module.exports = login
