@@ -1,0 +1,11 @@
+{
+  "name": "products",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "@apollo/federation": "^0.9.4",
+    "apollo-server": "^2.9.3",
+    "graphql": "^14.4.2"
+  }
+}
