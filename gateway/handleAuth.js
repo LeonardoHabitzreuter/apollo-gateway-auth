@@ -1,12 +1,18 @@
 const { verify } = require('jsonwebtoken')
 
-const PUBLIC_ACTIONS = ["login("]
+const PUBLIC_ACTIONS = ["login"]
 
-const actionIsPublic = ({ query }) => PUBLIC_ACTIONS.some(action => action.includes(query))
+const actionIsPublic = ({ query }) => (
+  PUBLIC_ACTIONS.some(action => query.includes(action))
+)
 
-const isIntrospectionQuery = ({ operationName }) => operationName === 'IntrospectionQuery'
+const isIntrospectionQuery = ({ operationName }) => (
+  operationName === 'IntrospectionQuery'
+)
 
-const shouldAuthenticate = body => !isIntrospectionQuery(body) && !actionIsPublic(body)
+const shouldAuthenticate = body => (
+  !isIntrospectionQuery(body) && !actionIsPublic(body)
+)
 
 const handleAuth = ({ req }) => {
   if (shouldAuthenticate(req.body)) {
